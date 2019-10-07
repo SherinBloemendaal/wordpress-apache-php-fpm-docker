@@ -8,7 +8,6 @@ services:
       - ./app:/var/www/html
     ports:
       - 880:80
-      - 8443:443
     depends_on:
       - wordpress
   wordpress:
