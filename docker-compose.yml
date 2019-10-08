@@ -5,7 +5,7 @@ services:
     hostname: apache
     build: apache
     volumes:
-      - ./app:/var/www/html
+      - ./app/wordpress:/var/www/html
     ports:
       - 880:80
     depends_on:
@@ -14,7 +14,7 @@ services:
     hostname: wordpress
     build: wordpress
     volumes:
-      - ./app:/var/www/html
+      - ./app/wordpress:/var/www/html
     ports:
       - 9000:9000
     depends_on:
@@ -38,13 +38,10 @@ services:
       '--collation-server=utf8mb4_unicode_ci'
     ]
     volumes:
-      - db_data:/var/lib/mysql
+      - ./app/mysql:/var/lib/mysql
     environment:
       MYSQL_ROOT_PASSWORD: wordpress
       MYSQL_DATABASE: wordpress
       MYSQL_USER: wordpress
       MYSQL_PASSWORD: wordpress
-
-volumes:
-  db_data: {}
 
